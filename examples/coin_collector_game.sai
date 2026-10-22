@@ -1,0 +1,43 @@
+# coin_collector_game.sai - move with the arrow keys, collect 5 coins to win.
+make player_x = 200
+make player_y = 260
+make coin_x = 60
+make coin_y = 60
+make score = 0
+make goal = 5
+
+make game_window = open_game("Coin Collector", 480, 320)
+every(33, "tick")
+
+command tick() {
+    when key_down("left") and player_x > 0 {
+        player_x = player_x - 6
+    }
+    when key_down("right") and player_x < 450 {
+        player_x = player_x + 6
+    }
+    when key_down("up") and player_y > 0 {
+        player_y = player_y - 6
+    }
+    when key_down("down") and player_y < 290 {
+        player_y = player_y + 6
+    }
+
+    when overlaps(player_x, player_y, 30, 30, coin_x, coin_y, 16, 16) {
+        score = score + 1
+        coin_x = random(0, 450)
+        coin_y = random(0, 290)
+    }
+
+    clear_screen()
+    draw_circle(coin_x + 8, coin_y + 8, 8, "gold")
+    draw_rect(player_x, player_y, 30, 30, "blue")
+    draw_text(10, 10, "Score: " + score + " / " + goal, "black")
+
+    when score >= goal {
+        draw_text(150, 140, "You win!", "green")
+        stop_timer()
+    }
+}
+
+run_app()

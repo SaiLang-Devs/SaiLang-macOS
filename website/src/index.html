@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SaiLang: a programming language for everyone</title>
+  <link rel="icon" type="image/png" href="assets/sailang-logo.png">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<!--HEADER-->
+<main>
+  <section class="hero">
+    <img src="assets/sailang-logo.png" alt="SaiLang logo" class="hero-logo">
+    <h1>SaiLang</h1>
+    <p class="tagline">A programming language that reads like English. Easy enough for a ten-year-old, powerful enough for real projects.</p>
+    <div class="actions">
+      <a class="button" href="download.html">Download SaiLang {{VERSION}}</a>
+      <a class="button secondary" href="instructions.html">Read the instructions</a>
+    </div>
+  </section>
+
+  <section class="split">
+    <div>
+      <h2>Readable by design</h2>
+      <p>Write what you mean. Variables are made with <code>make</code>, output uses <code>say</code>, and decisions are made with <code>when</code> and <code>otherwise</code>.</p>
+      <p>SaiLang runs on Windows 10 and 11 and works without administrator rights.</p>
+    </div>
+    <pre class="code"><code>make player = "Sai"
+make score = 0
+
+command greet(name) {
+    say "Hello,", name
+}
+
+greet(player)
+
+repeat 5 times {
+    make score = score + 10
+}
+
+when score &gt;= 50 {
+    say "Level complete!"
+} otherwise {
+    say "Keep playing!"
+}</code></pre>
+  </section>
+
+  <section class="cards">
+    <article>
+      <h3>Windows and games</h3>
+      <p>Open real windows with buttons and text boxes, show pictures, and draw a game with keyboard controls.</p>
+      <a href="about.html">What you can build</a>
+    </article>
+    <article>
+      <h3>SaiLang IDLE</h3>
+      <p>A built-in editor with colours, a Run button, and error lines that light up when something goes wrong.</p>
+      <a href="instructions.html">How to open it</a>
+    </article>
+    <article>
+      <h3>Learn with a book</h3>
+      <p>A step-by-step guide for complete beginners, with projects you can finish in an afternoon.</p>
+      <a href="book.html">About the book</a>
+    </article>
+  </section>
+
+  <section class="notice">
+    <h2>Good to know</h2>
+    <p>SaiLang 1.0 runs programs through a Python engine, so Python 3.9 or newer must be installed. Installing Python from python.org takes a few minutes and does not need administrator rights. Compiling to a standalone program is planned for a later version.</p>
+  </section>
+</main>
+<!--FOOTER-->
+</body>
+</html>

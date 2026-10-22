@@ -1,0 +1,6 @@
+# modules.sai - reusing code from another file
+import "lib/mathtools.sai"
+
+say "Module version:", tool_version
+say "5 squared is", square(5)
+say "3 cubed is", cube(3)

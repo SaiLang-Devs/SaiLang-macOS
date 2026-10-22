@@ -1,0 +1,19 @@
+# variables.sai - making and changing values
+make name = "Sai"
+make age = 10
+make ready = true
+make nothing_yet = nothing
+
+say "Name:", name
+say "Age next year:", age + 1
+say "Ready?", ready
+say "Nothing is:", nothing_yet
+
+# 'make' can change a value that already exists at the same level
+make age = age + 1
+say "Now:", age
+
+# plain '=' changes an existing value
+age = age * 2
+say "Doubled:", age
+say "Joined text: " + name + " is " + age

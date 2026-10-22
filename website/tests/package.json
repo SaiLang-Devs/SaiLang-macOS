@@ -1,0 +1,6 @@
+{
+  "name": "sailang-website-tests",
+  "private": true,
+  "scripts": { "test": "node site_test.js" },
+  "devDependencies": { "jsdom": "^24.0.0" }
+}

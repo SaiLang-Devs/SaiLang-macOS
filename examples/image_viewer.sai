@@ -1,0 +1,12 @@
+# image_viewer.sai - show a picture in a window
+# Supported formats: PNG and GIF. Local paths are relative to the folder you run SaiLang from.
+make win = open_window("Image Viewer", 420, 320)
+label(win, "A picture from a local file:")
+show_image(win, "examples/assets/sample.png")
+
+# To show a picture from the internet, uncomment the next two lines and use a
+# PNG or GIF address. Downloads time out after 10 seconds and are limited to 5 MB.
+# label(win, "A picture from the web:")
+# show_image(win, "https://example.com/your-picture.png")
+
+run_app()

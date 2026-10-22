@@ -1,0 +1,31 @@
+# loops.sai - repeat, while, and for each
+say "Counting with repeat:"
+repeat 3 times {
+    say "  hip hip hooray"
+}
+
+make countdown = 3
+say "Countdown with while:"
+while countdown > 0 {
+    say "  ", countdown
+    countdown = countdown - 1
+}
+say "Liftoff!"
+
+say "Even numbers from 0 to 9 using skip and stop:"
+make n = -1
+while true {
+    n = n + 1
+    when n > 9 {
+        stop
+    }
+    when n % 2 == 1 {
+        skip
+    }
+    say "  ", n
+}
+
+make fruit = ["apple", "banana", "cherry"]
+for each item in fruit {
+    say "I like", item
+}

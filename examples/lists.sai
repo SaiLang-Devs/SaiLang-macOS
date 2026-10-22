@@ -1,0 +1,25 @@
+# lists.sai - storing many values together
+make items = ["sword", "map", "key"]
+say "Inventory:", items
+say "You have", length(items), "items"
+say "First item:", items[0]
+
+append(items, "potion")
+items[0] = "shiny sword"
+say "After changes:", items
+
+remove_at(items, 1)
+say "After removing the map:", items
+
+when contains(items, "key") {
+    say "You can open the door!"
+}
+
+make numbers = range(1, 6)
+make total = 0
+for each value in numbers {
+    total = total + value
+}
+say "Sum of 1 to 5 is", total
+say "Biggest:", max(numbers), " Smallest:", min(numbers)
+say "Words:", split("red green blue", " ")

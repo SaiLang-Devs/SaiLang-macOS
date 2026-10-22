@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Search SaiLang</title>
+  <link rel="icon" type="image/png" href="assets/sailang-logo.png">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<!--HEADER-->
+<main class="page">
+  <h1>Search</h1>
+  <form class="search-page" action="search.html" method="get" role="search">
+    <input type="search" name="q" id="q" aria-label="Search terms" placeholder="Search SaiLang" required>
+    <button class="button" type="submit">Search</button>
+  </form>
+  <p id="search-summary" role="status" aria-live="polite"></p>
+  <ol id="results" class="results"></ol>
+  <noscript><p>Search needs JavaScript to be turned on in your browser.</p></noscript>
+</main>
+<!--FOOTER-->
+</body>
+</html>

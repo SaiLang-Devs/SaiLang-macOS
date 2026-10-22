@@ -1,0 +1,25 @@
+# functions.sai - commands with inputs and results
+command add(a, b) {
+    give a + b
+}
+
+command fib(n) {
+    when n < 2 {
+        give n
+    }
+    give fib(n - 1) + fib(n - 2)
+}
+
+command describe(number) {
+    when number % 2 == 0 {
+        give "even"
+    }
+    give "odd"
+}
+
+say "2 + 3 =", add(2, 3)
+say "The 10th Fibonacci number is", fib(10)
+
+for each n in [4, 7] {
+    say n, "is", describe(n)
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Download SaiLang</title>
+  <link rel="icon" type="image/png" href="assets/sailang-logo.png">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<!--HEADER-->
+<main class="page">
+  <h1>Download manager</h1>
+  <p class="lead">Choose a file, check it, then follow the <a href="instructions.html">instructions</a>.</p>
+
+  <h2>Available downloads</h2>
+  <table class="downloads">
+    <thead>
+      <tr><th>File</th><th>Version</th><th>Size</th><th>What it is</th><th></th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>{{SETUP_NAME}}</strong> <span class="badge">Recommended</span><br><small>SHA-256: <span class="hash">{{SETUP_SHA256}}</span></small></td>
+        <td>{{VERSION}}</td>
+        <td>{{SETUP_SIZE_KB}} KB</td>
+        <td>The Windows setup wizard. It installs SaiLang IDLE, the command prompt, examples and documentation, and adds Start Menu and desktop icons. No administrator rights needed. Python 3.9+ is required.</td>
+        <td><a class="button" href="downloads/{{SETUP_NAME}}" download>Download</a></td>
+      </tr>
+      <tr>
+        <td><strong>{{ZIP_NAME}}</strong><br><small>SHA-256: <span class="hash">{{SHA256}}</span></small></td>
+        <td>{{VERSION}}</td>
+        <td>{{SIZE_KB}} KB</td>
+        <td>The source package for people who want to read or change the code. Contains the same programs, plus tests and the book source.</td>
+        <td><a class="button secondary" href="downloads/{{ZIP_NAME}}" download>Download</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Check your download</h2>
+  <p>Select the ZIP you downloaded. This page calculates its SHA-256 fingerprint inside your browser, and nothing is uploaded anywhere.</p>
+  <div class="verify" data-sha256="{{SHA256}}">
+    <input type="file" id="verify-file" accept=".zip">
+    <p id="verify-result" role="status" aria-live="polite"></p>
+  </div>
+
+  <h2>Before you install</h2>
+  <ul>
+    <li>Windows 10 or Windows 11.</li>
+    <li>Python 3.9 or newer from <a href="https://www.python.org/downloads/">python.org</a>. Tick "tcl/tk and IDLE" during setup, and choose "Install for me only" so no administrator rights are needed. The setup wizard checks for Python and offers this link if it is missing.</li>
+  </ul>
+  <p>Run the setup wizard, then open <strong>SaiLang IDLE</strong> from your desktop. The <a href="instructions.html">full instructions</a> explain each step.</p>
+
+  <h2>Version history</h2>
+  <p><strong>1.0.0</strong> &mdash; first release. See the changelog in the download for the full list.</p>
+</main>
+<!--FOOTER-->
+</body>
+</html>

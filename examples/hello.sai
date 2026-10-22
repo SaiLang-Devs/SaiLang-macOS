@@ -1,0 +1,22 @@
+# hello.sai - your first SaiLang program
+make player = "Sai"
+make score = 0
+
+say "Welcome to SaiLang!"
+
+command greet(name) {
+    say "Hello,", name
+}
+
+greet(player)
+
+repeat 5 times {
+    make score = score + 10
+    say "Score:", score
+}
+
+when score >= 50 {
+    say "Level complete!"
+} otherwise {
+    say "Keep playing!"
+}

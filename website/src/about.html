@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About SaiLang</title>
+  <link rel="icon" type="image/png" href="assets/sailang-logo.png">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<!--HEADER-->
+<main class="page">
+  <h1>About SaiLang</h1>
+  <p class="lead">SaiLang is a general-purpose programming language with English-like commands. It is made for people who are new to coding, and for experienced developers who want something small and readable for scripts, simple desktop apps, and games.</p>
+
+  <h2>What SaiLang is for</h2>
+  <ul>
+    <li><strong>Learning.</strong> Every line says what it does. There are no symbols to memorise beyond a few basic operators.</li>
+    <li><strong>Small tools.</strong> Read a file, count words, sort a list, or ask the user questions.</li>
+    <li><strong>Desktop windows.</strong> Open a window, add labels, buttons and text boxes, and show PNG or GIF pictures.</li>
+    <li><strong>Simple games.</strong> Draw shapes, read the arrow keys, run a game loop, and detect collisions.</li>
+  </ul>
+
+  <h2>The language at a glance</h2>
+  <pre class="code"><code>make ages = [9, 10, 11]
+
+for each age in ages {
+    when age &gt;= 10 {
+        say age, "is old enough for the club"
+    } otherwise {
+        say age, "is too young for the club"
+    }
+}
+
+command double(n) {
+    give n * 2
+}
+say "Double 7 is", double(7)</code></pre>
+  <p>Main features in version 1.0:</p>
+  <ul>
+    <li>Numbers, text, true/false values, lists, and <code>nothing</code></li>
+    <li><code>when</code> / <code>otherwise</code>, <code>repeat</code>, <code>while</code>, <code>for each</code>, <code>stop</code> and <code>skip</code></li>
+    <li>Commands with inputs and results, including recursion</li>
+    <li><code>try</code> / <code>on error</code>, and error messages that name the file and line</li>
+    <li><code>import</code> to reuse code from another file</li>
+    <li>A standard library for text, lists, maths, files and user input</li>
+    <li>SaiLang IDLE, an editor with colours and a Run button</li>
+  </ul>
+
+  <h2>Honest limits of version 1.0</h2>
+  <ul>
+    <li>SaiLang runs programs through a Python engine. It does not yet make standalone <code>.exe</code> files.</li>
+    <li>Pictures must be PNG or GIF.</li>
+    <li>There are no classes or dictionaries yet.</li>
+    <li>Windows and games need Python's "tcl/tk" option, which the Python installer offers.</li>
+  </ul>
+
+  <h2>Project</h2>
+  <p>SaiLang 1.0.0 is released under the MIT licence, which means you may use, change and share it freely. The language rules are written down in the language specification included in the download. Anyone can report bugs or suggest changes on the project's source repository.</p>
+  <p><a class="button" href="download.html">Go to downloads</a></p>
+</main>
+<!--FOOTER-->
+</body>
+</html>

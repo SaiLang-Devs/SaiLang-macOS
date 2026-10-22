@@ -1,0 +1,19 @@
+# errors.sai - handling mistakes safely with try / on error
+command safe_divide(a, b) {
+    try {
+        give a / b
+    } on error {
+        say "Could not divide:", error_message
+        give nothing
+    }
+}
+
+say "10 / 4 =", safe_divide(10, 4)
+say "10 / 0 =", safe_divide(10, 0)
+
+try {
+    make scores = [1, 2, 3]
+    say scores[10]
+} on error {
+    say "List problem:", error_message
+}

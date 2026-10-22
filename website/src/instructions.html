@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SaiLang instructions</title>
+  <link rel="icon" type="image/png" href="assets/sailang-logo.png">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<!--HEADER-->
+<main class="page">
+  <h1>Instructions</h1>
+  <p class="lead">Follow these steps in order. Each one takes a few minutes.</p>
+
+  <h2>Step 1: Install Python</h2>
+  <ol>
+    <li>Open <a href="https://www.python.org/downloads/">python.org/downloads</a> and download the Windows installer.</li>
+    <li>Run it. Choose <strong>Customize installation</strong>.</li>
+    <li>Tick <strong>tcl/tk and IDLE</strong> (needed for windows and games).</li>
+    <li>On the next screen, choose <strong>Install for me only</strong>.</li>
+    <li>Finish the installation, then close any open Command Prompt windows.</li>
+  </ol>
+
+  <h2>Step 2: Run the setup wizard</h2>
+  <ol>
+    <li>Download <a href="download.html">{{SETUP_NAME}}</a>. Optionally check it with the checksum tool first.</li>
+    <li>Double-click the file and follow the pages: Welcome, Licence, folder, Install, Finish.</li>
+    <li>Leave <strong>Start SaiLang IDLE</strong> ticked and click Finish. SaiLang IDLE opens.</li>
+  </ol>
+  <p>The wizard adds SaiLang IDLE, a SaiLang Prompt and an Uninstall entry to the Start Menu, and a SaiLang IDLE icon on your desktop. It installs for your user account only.</p>
+
+  <h2>Step 3: Open SaiLang IDLE</h2>
+  <p>Double-click the <strong>SaiLang IDLE</strong> icon on your desktop, or open it from the Start Menu. The SaiLang editor opens.</p>
+  <ul>
+    <li><strong>File &gt; Open</strong> loads a <code>.sai</code> program. Try <code>examples\hello.sai</code>.</li>
+    <li>Press <strong>F5</strong> to run the program. Output appears in the lower pane.</li>
+    <li>Press <strong>F6</strong> to check a program for mistakes without running it.</li>
+    <li>Press <strong>Esc</strong> to stop a running program.</li>
+    <li>If a program asks a question, type the answer in <strong>Program input</strong> and press Enter.</li>
+  </ul>
+  <p>The setup wizard makes <code>.sai</code> files open in SaiLang IDLE automatically. Double-click any <code>.sai</code> file to open it.</p>
+
+  <h2>Step 4: Write your first program</h2>
+  <ol>
+    <li>In IDLE choose <strong>File &gt; New</strong>.</li>
+    <li>Type:
+      <pre class="code"><code>make name = ask("What is your name? ")
+say "Hello,", name</code></pre>
+    </li>
+    <li>Choose <strong>File &gt; Save As</strong> and save it as <code>hello.sai</code>.</li>
+    <li>Press F5, type your name in the Program input box, and press Enter.</li>
+  </ol>
+
+  <h2>Alternative: the Command Prompt</h2>
+  <p>Open Command Prompt in the SaiLang folder and run:</p>
+  <pre class="code"><code>set PYTHONPATH=src
+python -m sailang examples\hello.sai
+python -m sailang                  (starts the prompt)
+python -m sailang check hello.sai  (checks without running)</code></pre>
+  <p>The <code>set</code> line lasts for one Command Prompt window, so run it again in each new window.</p>
+
+  <h2>Windows and games</h2>
+  <p>The examples <code>desktop_app.sai</code>, <code>image_viewer.sai</code> and <code>coin_collector_game.sai</code> open windows. Run them with F5 in IDLE. Closing the window ends the program.</p>
+
+  <h2>Troubleshooting</h2>
+  <dl class="faq">
+    <dt>"Python was not found" or Windows opens the Microsoft Store</dt>
+    <dd>Install Python from python.org as in Step 1. Then turn off the python "App execution alias" in Settings &gt; Apps &gt; Advanced app settings &gt; App execution aliases.</dd>
+    <dt>Windows or games do not open, and an error mentions Tkinter</dt>
+    <dd>Run the Python installer again, choose Modify, and tick <strong>tcl/tk and IDLE</strong>.</dd>
+    <dt>Double-clicking a <code>.sai</code> file does nothing</dt>
+    <dd>Run the setup wizard again so that it sets up the file association, or right-click the file, choose <strong>Open with</strong>, and pick SaiLang IDLE.</dd>
+    <dt>Smart App Control blocks <code>SaiLang-Setup</code> or the SaiLang programs</dt>
+    <dd>SaiLang's Windows programs are not yet digitally signed, so Smart App Control may stop them. Use the source ZIP instead. Extract it, open Command Prompt in the folder, and run <code>set PYTHONPATH=src</code> then <code>python -m sailang idle</code>. Windows allows Python itself to run.</dd>
+    <dt>A file was saved as <code>hello.sai.txt</code></dt>
+    <dd>In Save As, set "Save as type" to All Files, or rename the file and remove the <code>.txt</code>.</dd>
+    <dt>An error names a line number</dt>
+    <dd>The message shows the file and line. In IDLE that line is highlighted in red. Read the message: it says what SaiLang expected.</dd>
+    <dt>Text shows strange characters</dt>
+    <dd>Save the file as UTF-8 (the IDLE save button does this for you).</dd>
+  </dl>
+</main>
+<!--FOOTER-->
+</body>
+</html>

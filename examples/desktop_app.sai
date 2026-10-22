@@ -1,0 +1,22 @@
+# desktop_app.sai - a small window with a counter, a text box, and a greeting
+make clicks = 0
+
+make win = open_window("My First SaiLang App", 340, 220)
+label(win, "Press the button to count!")
+make counter_label = label(win, "You clicked 0 times")
+button(win, "Click me", "on_click")
+
+make name_box = entry(win)
+make greeting = label(win, "Type your name, then press Greet")
+button(win, "Greet", "greet")
+
+command on_click() {
+    clicks = clicks + 1
+    set_text(counter_label, "You clicked " + clicks + " times")
+}
+
+command greet() {
+    set_text(greeting, "Hello, " + entry_text(name_box) + "!")
+}
+
+run_app()

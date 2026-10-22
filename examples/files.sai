@@ -1,0 +1,20 @@
+# files.sai - reading and writing text files
+# File paths are relative to the folder you run SaiLang from.
+make path = "sai_example_notes.txt"
+
+write_file(path, "Remember to feed the cat.\n")
+append_file(path, "Remember to walk the dog.\n")
+
+say "Saved notes:"
+say read_file(path)
+
+when file_exists(path) {
+    say "The file exists, so we are done."
+}
+
+# Reading a file that does not exist is caught by 'try'
+try {
+    say read_file("no_such_file.txt")
+} on error {
+    say "Problem:", error_message
+}

@@ -1,0 +1,10 @@
+# lib/mathtools.sai - a reusable module. Import it with: import "lib/mathtools.sai"
+command square(n) {
+    give n * n
+}
+
+command cube(n) {
+    give n * n * n
+}
+
+make tool_version = "1.0"
