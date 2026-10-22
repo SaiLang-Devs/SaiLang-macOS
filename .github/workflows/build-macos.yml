@@ -1,0 +1,78 @@
+name: build-macos
+
+# Builds SaiLang.app and a .dmg installer on a GitHub Mac runner.
+# Run from the Actions tab (Run workflow), or push a tag like v1.0.0-mac.
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*-mac"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: macos-14            # Apple Silicon (arm64) Mac runner
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install PyInstaller
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pyinstaller
+
+      - name: Make the app icon (.icns)
+        run: |
+          mkdir -p AppIcon.iconset
+          LOGO=src/sailang/assets/sailang-logo.png
+          sips -z 16 16     "$LOGO" --out AppIcon.iconset/icon_16x16.png
+          sips -z 32 32     "$LOGO" --out AppIcon.iconset/icon_16x16@2x.png
+          sips -z 32 32     "$LOGO" --out AppIcon.iconset/icon_32x32.png
+          sips -z 64 64     "$LOGO" --out AppIcon.iconset/icon_32x32@2x.png
+          sips -z 128 128   "$LOGO" --out AppIcon.iconset/icon_128x128.png
+          sips -z 256 256   "$LOGO" --out AppIcon.iconset/icon_128x128@2x.png
+          sips -z 256 256   "$LOGO" --out AppIcon.iconset/icon_256x256.png
+          sips -z 512 512   "$LOGO" --out AppIcon.iconset/icon_256x256@2x.png
+          sips -z 512 512   "$LOGO" --out AppIcon.iconset/icon_512x512.png
+          sips -z 1024 1024 "$LOGO" --out AppIcon.iconset/icon_512x512@2x.png
+          iconutil -c icns AppIcon.iconset -o SaiLang.icns
+
+      - name: Build SaiLang.app
+        run: |
+          python -m PyInstaller --noconfirm --windowed --onefile --name SaiLang \
+            --paths src \
+            --icon SaiLang.icns \
+            --osx-bundle-identifier org.sailang.sai \
+            --add-data "src/sailang/assets:sailang/assets" \
+            packaging/sai_entry.py
+
+      - name: Smoke test
+        run: |
+          APP=dist/SaiLang.app/Contents/MacOS/SaiLang
+          test -d dist/SaiLang.app
+          "$APP" --version
+          printf 'make n = 2\nsay "Doubled:", n * 2\n' > smoke.sai
+          "$APP" smoke.sai
+          "$APP" check smoke.sai
+
+      - name: Make the .dmg installer
+        run: |
+          mkdir -p dmg-staging
+          cp -R dist/SaiLang.app dmg-staging/
+          ln -s /Applications dmg-staging/Applications
+          hdiutil create -volname "SaiLang 1.0.0" -srcfolder dmg-staging \
+            -ov -format UDZO SaiLang-v1.0.0-macos-arm64.dmg
+          shasum -a 256 SaiLang-v1.0.0-macos-arm64.dmg > SaiLang-v1.0.0-macos-arm64.dmg.sha256
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SaiLang-macos
+          path: |
+            SaiLang-v1.0.0-macos-arm64.dmg
+            SaiLang-v1.0.0-macos-arm64.dmg.sha256
