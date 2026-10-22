@@ -294,7 +294,8 @@ class FileTests(unittest.TestCase):
 
     def test_missing_file_error_is_friendly(self):
         with self.assertRaises(SaiRuntimeError) as ctx:
-            run(f'say read_file("{self.tmp}/missing.txt")')
+            path = str(self.tmp / "missing.txt").replace("\\", "/")
+            run(f'say read_file("{path}")')
         self.assertIn("I could not read", ctx.exception.message)
 
 
