@@ -378,6 +378,7 @@ class DesktopTests(unittest.TestCase):
     def test_show_local_png(self):
         png = os.path.join(ROOT, "examples", "assets", "sample.png")
         interp = Interpreter(out=lambda s: None)
+        png = str(png).replace("\\", "/")
         interp.execute(f'make win = open_window("Img", 200, 150)\nshow_image(win, "{png}")\n', "img.sai")
         self.assertIsInstance(interp.globals.vars["win"], Handle)
         interp.gui["root"].destroy()
